@@ -1,12 +1,8 @@
 package edu.gcu.cst341.spring.database.demo;
-
-
-/* BUilt Spring Initialzr Application from Start.spring.io
- * Web, JDBC, JPA, H2
+/* Built Spring Initialzr Application from Start.spring.io
+ * DEPENDENCIES: Web, JDBC, JPA, H2
  * Maven, Java 8
-
- * H2 In memory DB
- * spring.h2.console.enabled=true
+ * H2 = In memory DB
  * http://localhost:8080/h2-console/
  * jdbc:h2:mem:testdb
  */
@@ -27,15 +23,11 @@ import edu.gcu.cst341.spring.database.demo.jpa.MovieJPARepo;
 // CommandLineRunner allows us to run code like a main
 @SpringBootApplication
 public class JPADemoApplication implements CommandLineRunner {
-
-	// Level is set in /src/main/resources/application.properties
-	// logging.level.root=Info
 	private Logger logger = LoggerFactory.getLogger(this.getClass());
 
 	// Autowired to allow Spring to manage object creation
 	@Autowired
 	MovieJPARepo repo;
-	
 	@Autowired
 	DirectorJPARepo directorrepo;
 
@@ -47,11 +39,9 @@ public class JPADemoApplication implements CommandLineRunner {
 	// Part of the commandline runner class
 	@Override
 	public void run(String... args) throws Exception {
-		
 		/*
 		 * CREATE SIMPLE
 		 */	
-		
 		// Need to pass a Movie object WITH NO ID back to method for add
 		Movie n;
 		// Make a new Movie
@@ -66,11 +56,9 @@ public class JPADemoApplication implements CommandLineRunner {
 		// Print out all the Movies	
 		logger.info("\nAll Movies AFTER CREATE (SIMPLE) -> {}", repo.findAll());
 		
-		
 		/*
 		 * CREATE ADVANCE 
 		 */	
-		
 		// Need to pass a Movie object WITH NO ID back to method for add
 		// Make a new Director
 		Director director = new Director("James Cameron");
@@ -82,40 +70,19 @@ public class JPADemoApplication implements CommandLineRunner {
 		// Print out all the Movies	
 		logger.info("\nAll Movies AFTER CREATE (ADVANCED) -> {}", repo.findAll());
 		
-	
-		
-		
-		/*
-		 * CREATE TEST DUPLICATE DIRECTOR 
-		 */	
-		
-
-		// repo.insertWithDirectorCheckDups();
-		
-		// Print out all the Movies	
-		// logger.info("\nAll Movies AFTER CREATE (ADVANCED) -> {}", repo.findAll());
-		
-		
 		/*
 		 * READ ALL
 		 */
-
-		// Find all movies
 		logger.info("\nAll Movies -> {}", repo.findAll());
-		
 		
 		/*
 		 * READ SINGLE
-		 */
-		
-		// Find Movies by ID 		
+		 */		
 		logger.info("\nFind single Movie[201] -> {}", repo.findById(201));
 
 		/*
 		 * UPDATE
 		 */
-		
-		
 		Movie m;
 		// Update Movie by getting original movie
 		m = repo.findById(2);
@@ -130,48 +97,26 @@ public class JPADemoApplication implements CommandLineRunner {
 		m.setName(m.getName() + " - UPDATED");
 		// Need to pass the Movie object WITH ID back to method for update
 		logger.info("\nUpdate Single Movie [203] -> {} updated", repo.update(m));
-
 		// Print out all the Movies	
 		logger.info("\nAll Movies AFTER UPDATE -> {}", repo.findAll());
 		
-
 		/*
 		 * DELETE
 		 */	
-		
 		// Void method so cannot use Logger
 		repo.deleteById(1);
-			
 		// Print out all the Movies	
 		logger.info("\nAll Movies AFTER DELETE -> {}", repo.findAll());
-		
 		
 		/*
 		 *  MANY TO ONE EXAMPLE
 		 */
-		repo.getStars(201);
+	
 		Star star1 = new Star("Karen Allen", false, 7500.01);
 		Star star2 = new Star("John Rhys-Davies", false, 4500.99);
 		repo.addStar(201, star1);
 		repo.addStar(201, star2);
-		
-		logger.info("\nAll Movies AFTER STARS Added -> {}", repo.findAll());		
-		
-		
-//		logger.info("All users -> {}", repo.findAll());
-//		System.out.println("Here 1 ...");
-//		Movie movie1 = repo.findById(201);
-//		logger.info("\nView Movie 201 -> {}",movie1);	
-//		logger.info("\nView Direector 201 -> {}",movie1.getDirector());
-//		
-//		// Void method so cannot use Logger
-//		// repo.deleteById(1);
-//		
-//		// ßlogger.info("All users -> {}", repo.findAll());
-//		
-//
-//		
-
-		
+		//repo.getStars(201);
+		logger.info("\nAll Movies AFTER STARS Added -> {}", repo.findAll());				
 	}
 }

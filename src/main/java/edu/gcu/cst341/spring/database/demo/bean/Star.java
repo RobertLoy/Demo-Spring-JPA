@@ -24,43 +24,33 @@ public class Star {
 	public int getId() {
 		return id;
 	}
-
 	public void setId(int id) {
 		this.id = id;
 	}
-
 	public String getName() {
 		return name;
 	}
-
 	public void setName(String name) {
 		this.name = name;
 	}
-
 	public boolean isAList() {
 		return isAList;
 	}
-
 	public void setAList(boolean isAList) {
 		this.isAList = isAList;
 	}
-
 	public double getSalary() {
 		return salary;
 	}
-
 	public void setSalary(double salary) {
 		this.salary = salary;
 	}
-
 	public Movie getMovie() {
 		return movie;
 	}
-
 	public void setMovie(Movie movie) {
 		this.movie = movie;
 	}
-
 	public Star(String name, boolean isAList, double salary) {
 		this.name = name;
 		this.isAList = isAList;
@@ -74,12 +64,10 @@ public class Star {
 		this.salary = salary;
 		this.movie = movie;
 	}
-
 	public Star() {}
-
 	@Override
 	public String toString() {
-		return "\n==> STAR ==> \n[id=" + id + ", name=" + name + ", isAList=" + isAList + ", salary=" + salary + ", movie=" + movie
-				+ "]";
-	}
+		return "\n==> STAR ==> \n[id=" + id + ", name=" + name + ", isAList=" + isAList +
+				", salary=" + salary + "]";
+	}	
 }

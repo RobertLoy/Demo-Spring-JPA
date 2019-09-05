@@ -59,9 +59,11 @@ public class MovieJPARepo {
 		em.persist(a);
 	}
 	
-	public void getStars(int id) {
+	public List<Star> getStars(int id) {
 		Movie movie = findById(id);	
-		logger.info("\nGet Stars => {}", movie.getMovies());
+		for(Star s : movie.getMovies())
+			System.out.println("Star = " + s);
+		return movie.getMovies();
 	}
 	
 	public void addStar(int id, Star s) {

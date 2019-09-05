@@ -38,12 +38,6 @@ public class DirectorJPARepo {
 		return em.merge(movie);
 	}
 	
-	// If ID does NOT exists in Movie Object it does Insert
-//	public void deleteById(int id) {
-//		Director movie = findById(id);
-//		em.remove(movie);
-//	}
-	
 	public boolean insertWithDirector(){
 	
 		Director d = new Director("George Lucas");

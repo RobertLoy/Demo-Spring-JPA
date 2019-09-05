@@ -34,15 +34,12 @@ public class Director {
 		this.id = id;
 		this.name = name;
 	}
-
 	public Movie getMovie() {
 		return movie;
 	}
-
 	public void setMovie(Movie movie) {
 		this.movie = movie;
 	}
-
 	public int getId() {
 		return id;
 	}
@@ -55,11 +52,9 @@ public class Director {
 	public void setName(String name) {
 		this.name = name;
 	}
-
 	@Override
 	public String toString() {
 		return "\n==> DIRECTOR ==> \n [id=" + id + ", name=" + name + "]\n";
 	}
-
 }
 
